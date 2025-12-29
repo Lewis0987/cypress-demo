@@ -1,15 +1,19 @@
 // <===【單行註解】 【cypress.config.js】這個檔案是 Cypress 專案最核心的「設定檔」 
 
-const { defineConfig } = require("cypress");
 
-module.exports = defineConfig({
+
+
+import { defineConfig } from 'cypress'
+
+export default defineConfig({
   projectId: '8wjy6m',
   e2e: {
-    specPattern: "cypress/e2e/**/*.cy.js",  // 限制掃描範圍
-    excludeSpecPattern: ["**/Application Data/**"], 
-    setupNodeEvents(on, config) {},
+    baseUrl: 'https://in-u6.ttgroup-dev.vip',
+    setupNodeEvents(on, config) {
+      // node events（目前可空）
+    },
   },
-});
+})
 
 
 /* <===【首部註解】
