@@ -23,3 +23,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// cypress/support/commands.js
+Cypress.Commands.add('loginByToken', () => {
+  cy.visit('/', {
+    onBeforeLoad(win) {
+      win.localStorage.setItem('token', Cypress.env('TOKEN'))
+    }
+  })
+})
+
+
+/*Cypress.Commands.add('closePopupIfExists', () => {
+  cy.get('body').then($body => {
+
+      // Subscribe popup
+    if ($body.find("button:contains('Later')").length) {
+      cy.contains('button', 'Later').click()
+    }
+
+    // 首充 / 輪盤 popup
+    if ($body.find("img[alt='ic_close']").length) {
+      cy.get("img[alt='ic_close']").first().click({ force: true })
+    }
+
+  })
+})
+*/
